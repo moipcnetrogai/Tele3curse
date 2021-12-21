@@ -1,0 +1,94 @@
+﻿<Page x:Class="Tele3.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tele3.Pages"
+      xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions" xmlns:controls="clr-namespace:Tele3"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="950"
+      Title="LoginPage">
+    <Page.Resources>
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="1"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                            <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="Andalus"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid x:Name="mainly" Visibility="Visible">
+            <Label x:Name="label1" Margin="370,93,344,411" Content="Номер телефона" FontFamily="Andalus" FontSize="15"/>
+            <Label x:Name="label2" Margin="363,123,351,381" Content="+7" FontFamily="Andalus" FontSize="15"/>
+
+            <TextBox HorizontalAlignment="Center" MaxLength="13" FontFamily="Andalus" Padding="5" Text="{Binding Value, StringFormat='$###-###-##-##'}"
+                 Style="{DynamicResource MyWaterMarkStyle}" x:Name="Phone" Width="200" Height="30" Tag="000 00 00-000" FontSize="15" Margin="380,122,370,378" TextChanged="Phone_TextChanged"/>
+            <Image x:Name="Go1" Visibility="Collapsed" Height="30" Width="20" Source="/Tele3;component/Resourses/назад.jpg" Margin="498,121,432,379" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Button x:Name="Go" Width="20" Height="30" Margin="498,121,432,379" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed" Click="Go_Click" Opacity="0.1"></Button>
+
+            <Image Source="/Tele3;component/Resourses/eSIM.jpg" Margin="232,175,524,225"/>
+            <Button x:Name="eSIM" Background="Transparent" BorderBrush="Transparent" Margin="248,189,542,241" Opacity="0.1" Click="eSIM_Click"/>
+            <Label x:Name="label3" Content="eSIM" Margin="248,250,558,254" FontFamily="Andalus" FontSize="15" Foreground="Black"/>
+
+            <Image Source="/Tele3;component/Resourses/Заказ.png" Margin="447,174,309,226"/>
+            <Label x:Name="tarif_Copy3" Foreground="black" FontSize="15" FontFamily="Andalus" Margin="464,252,377,254" HorizontalContentAlignment="left" Content="Заказать SIM"/>
+            <Button x:Name="Zakaz" Background="Transparent" BorderBrush="Transparent" Margin="464,189,326,241" Opacity="0.1" Click="Zakaz_Click"/>
+
+            <Image Source="/Tele3;component/Resourses/Пустое.png" Margin="232,322,524,78"></Image>
+            <Image Source="/Tele3;component/Resourses/сима.png" Height="35" Width="35" Margin="248,334,667,162"></Image>
+            <Label x:Name="tarif123" Foreground="black" FontSize="15" FontFamily="Andalus" Margin="248,399,564,102" HorizontalContentAlignment="left" Content="Активировать SIM"/>
+            <Button x:Name="AktivateSIM" Background="Transparent" BorderBrush="Transparent" Margin="248,334,542,96" Opacity="0.1" Click="AktivateSIM_Click"/>
+
+            <Image Source="/Tele3;component/Resourses/Пустое.png" Margin="447,322,309,78"></Image>
+            <Image  Height="35" Width="35" Margin="464,334,451,161" Source="/Tele3;component/Resourses/помащь.png"></Image>
+            <Label x:Name="tarif1234" Foreground="black" FontSize="15" FontFamily="Andalus" Margin="464,399,348,102" HorizontalContentAlignment="left" Content="Тарифы Tele3"/>
+            <Button x:Name="TarifiTele3" Background="Transparent" BorderBrush="Transparent" Margin="464,334,326,96" Opacity="0.1" Click="TarifiTele3_Click"/>
+        </Grid>
+        <Grid x:Name="passwordbox" Visibility="Collapsed">
+            <Label x:Name="label5" Margin="370,93,344,411" Content="Введите ваш пароль" FontFamily="Andalus" FontSize="15"/>
+            <TextBox VerticalAlignment="Center" TextChanged="Gopass_TextChanged" MaxLength="6" FontFamily="Andalus" Padding="5"
+                 Style="{DynamicResource MyWaterMarkStyle}" x:Name="Password" Height="30" Tag="000000" FontSize="15" Margin="411,124,469,376"/>
+            <Image x:Name="Gopass1" Visibility="Collapsed" Height="30" Width="20" Source="/Tele3;component/Resourses/назад.jpg" Margin="490,123,440,377" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Button x:Name="Gopass" Width="20" Height="30" Margin="490,123,440,377" BorderBrush="Transparent" Background="Transparent" Visibility="Collapsed" Click="Gopass_Click" Opacity="0.1"></Button>
+            <Button x:Name="GoBack" Width="80" Height="20" Margin="407,156,463,354" Style="{DynamicResource ButtonStyle1}" Content="Назад" Click="GoBack_Click"></Button>
+        </Grid>
+    </Grid>
+
+</Page>

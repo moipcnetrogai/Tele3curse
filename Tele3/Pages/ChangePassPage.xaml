@@ -1,0 +1,53 @@
+﻿<Page x:Class="Tele3.Pages.ChangePassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tele3.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="950"
+      Title="ChangePassPage">
+
+    <Page.Resources>
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="1"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                            <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="Andalus"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid x:Name="OldGrid" Visibility="Collapsed">
+            <Label FontWeight="Bold" FontFamily="Andalus" FontSize="12" Content="Введите ваш старый пароль" Margin="374,96,400,406"></Label>
+            <TextBox VerticalAlignment="Center" MaxLength="6" FontFamily="Andalus" Padding="5"
+                 Style="{DynamicResource MyWaterMarkStyle}" x:Name="PasswordOld" Height="30" Tag="000000" FontSize="15" Margin="428,124,452,376" TextChanged="PasswordOld_TextChanged"/>
+            <Button x:Name="GoBut" Visibility="Collapsed" Style="{DynamicResource ButtonStyle1}" Height="25" Width="100" Margin="413,159,437,346" Click="GoBut_Click">Ок</Button>
+        </Grid>
+
+        <Grid x:Name="NewGrid" Visibility="Collapsed">
+            <Label FontWeight="Bold" FontFamily="Andalus" FontSize="12" Content="Введите ваш новый пароль" Margin="374,96,400,406"></Label>
+            <TextBox VerticalAlignment="Center" MaxLength="6" FontFamily="Andalus" Padding="5"
+                 Style="{DynamicResource MyWaterMarkStyle}" x:Name="PasswordNew" Height="30" Tag="000000" FontSize="15" Margin="428,124,452,376" TextChanged="PasswordNew_TextChanged"/>
+            <Button x:Name="SaveBut" Visibility="Collapsed" Style="{DynamicResource ButtonStyle1}" Height="25" Width="100" Margin="413,159,437,346" Click="SaveBut_Click">Сохранить</Button>
+        </Grid>
+    </Grid>
+</Page>

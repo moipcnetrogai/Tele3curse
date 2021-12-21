@@ -1,0 +1,42 @@
+﻿<Page x:Class="Tele3.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tele3.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="950"
+      Title="MainPage">
+
+    <Grid>
+        <Image Source="/Tele3;component/Resourses/настройки.jpg" Width="30" Height="30" Margin="880,30,40,470"></Image>
+        <Image Source="/Tele3;component/Resourses/карточка.jpg" Margin="30,30,632,340" />
+        <Image Source="/Tele3;component/Resourses/доп карточка.jpg" Margin="330,30,332,340"></Image>
+        <Image Source="/Tele3;component/Resourses/платеж.jpg" Height="55" Width="55" Margin="635,30,260,445"></Image>
+        <Image Source="/Tele3;component/Resourses/тариф.png" Height="55" Width="55" Margin="635,100,260,375"></Image>
+        <Image Source="/Tele3;component/Resourses/eSIM.jpg" Margin="37,322,719,78"/>
+        <Image Source="/Tele3;component/Resourses/Заказ.png" Margin="248,322,508,78"></Image>
+        <Label x:Name="Phone" Foreground="White" FontSize="15" FontFamily="Andalus" Margin="50,45,701,455" HorizontalContentAlignment="Left" FontWeight="Bold" >123</Label>
+        <Label x:Name="Money" Foreground="White" FontSize="15" FontFamily="Andalus" Margin="174,61,655,439" HorizontalContentAlignment="Right" FontWeight="Bold">123,00</Label>
+        <Label x:Name="minutes" Foreground="White" FontSize="12" FontFamily="Andalus" Margin="44,107,866,398" HorizontalContentAlignment="Center">600</Label>
+        <Label x:Name="tarif" Foreground="White" FontSize="12" FontFamily="Andalus" Margin="49,129,680,376" HorizontalContentAlignment="left">Мой любимый интернет!</Label>
+        <Label x:Name="date" Foreground="White" FontSize="9" FontFamily="Andalus" Margin="88,165,786,345" HorizontalContentAlignment="left">29.12.2021</Label>
+        <Label x:Name="tarif_Copy" Foreground="black" FontSize="12" FontFamily="Andalus" Margin="704,114,170,392" HorizontalContentAlignment="left" Content="Мой тариф"/>
+        <Label x:Name="tarif_Copy1" Foreground="black" FontSize="12" FontFamily="Andalus" Margin="705,44,144,462" HorizontalContentAlignment="left" Content="Пополнить счет"/>
+        <Label x:Name="tarif_Copy2" Foreground="black" FontSize="12" FontWeight="Bold" FontFamily="Andalus" Margin="51,398,798,108" HorizontalContentAlignment="left" Content="eSIM"/>
+        <Label x:Name="tarif_Copy3" Foreground="black" FontSize="12" FontWeight="Bold" FontFamily="Andalus" Margin="265,400,576,106" HorizontalContentAlignment="left" Content="Заказать SIM"/>
+        <Label x:Name="Phone_Copy" Foreground="black" FontSize="15" FontFamily="Andalus" Margin="30,260,721,240" HorizontalContentAlignment="Left" FontWeight="Bold" Content="Возможности с Tele3" />
+
+
+        <Button x:Name="Notifications" Height="30" Width="30" Background="Transparent" BorderBrush="Transparent" Margin="880,30,40,470" Click="Notifications_Click" Opacity="0.1"></Button>
+        <Button x:Name="Platezh" Height="55" Width="55" Background="Transparent" BorderBrush="Transparent" Margin="635,30,260,445" Opacity="0.1" Click="Platezh_Click"></Button>
+        <Button x:Name="Tarif" Height="55" Width="55" Background="Transparent" BorderBrush="Transparent" Margin="635,100,260,375" Opacity="0.1" Click="Tarif_Click" ></Button>
+        <Button x:Name="eSIM" Background="Transparent" BorderBrush="Transparent" Margin="53,336,737,94" Opacity="0.1" Click="eSIM_Click"/>
+        <Button x:Name="Zakaz" Background="Transparent" BorderBrush="Transparent" Margin="265,336,525,94" Opacity="0.1" Click="Zakaz_Click"/>
+        <Button x:Name="Add_sim" Height="55" Width="55" Background="Transparent" BorderBrush="Transparent" Margin="446,70,449,405" Opacity="0.1" Click="Add_sim_Click"/>
+        <Image Source="/Tele3;component/Resourses/Пустое.png" Margin="462,324,295,79"/>
+        <Image Margin="480,336,435,160" Source="/Tele3;component/Resourses/помащь.png"/>
+        <Label x:Name="tarif1234" Foreground="black" FontSize="15" FontFamily="Andalus" Margin="480,399,332,102" HorizontalContentAlignment="left" Content="Тарифы Tele3"/>
+        <Button x:Name="TarifiTele3" Background="Transparent" BorderBrush="Transparent" Margin="480,336,311,97" Opacity="0.1" Click="TarifiTele3_Click"/>
+    </Grid>
+</Page>

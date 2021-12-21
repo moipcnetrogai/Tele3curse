@@ -1,0 +1,45 @@
+﻿<Page x:Class="Tele3.Pages.ActivationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tele3.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="950"
+      Title="ActivationPage">
+
+    <Page.Resources>
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="1"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                            <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="Andalus"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Label x:Name="label2" Margin="414,120,300,384" Content="+7" FontFamily="Andalus" FontSize="15"/>
+        <Label Margin="363,92,351,412" Content="Введите номер вашей симкарты" FontFamily="Andalus" FontSize="15"></Label>
+        <TextBox HorizontalAlignment="Center" MaxLength="13" FontFamily="Andalus" Padding="5" Text="{Binding Value, StringFormat='$###-###-##-##'}"
+                 Style="{DynamicResource MyWaterMarkStyle}" x:Name="Phone" Width="200" Height="30" Tag="000 00 00-000" FontSize="15" Margin="431,119,319,381" TextChanged="Phone_TextChanged"/>
+        <Button x:Name="ActivateBut" Visibility="Collapsed" Style="{DynamicResource ButtonStyle1}" Height="25" Width="120" Margin="418,154,412,351" Click="Button_Click">Активировать</Button>
+    </Grid>
+</Page>

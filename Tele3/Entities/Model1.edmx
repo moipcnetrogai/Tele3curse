@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище user32_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tele3_Clients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="surname" Type="varchar" MaxLength="50" />
+          <Property Name="secondname" Type="varchar" MaxLength="50" />
+          <Property Name="role" Type="bit" Nullable="false" />
+          <Property Name="birthday" Type="date" />
+        </EntityType>
+        <EntityType Name="Tele3_Numbers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="minutes" Type="int" Nullable="false" />
+          <Property Name="nextpayment" Type="date" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Balance" Type="int" Nullable="false" />
+          <Property Name="id_client" Type="int" Nullable="false" />
+          <Property Name="id_tarif" Type="int" />
+          <Property Name="password_set" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tele3_Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="surmane" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="secondname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tele3_Tarifs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="minutes" Type="int" Nullable="false" />
+          <Property Name="internet" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="messages" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="about" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Tele3_Numbers_Tele3_Numbers">
+          <End Role="Tele3_Clients" Type="Self.Tele3_Clients" Multiplicity="1" />
+          <End Role="Tele3_Numbers" Type="Self.Tele3_Numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tele3_Clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tele3_Numbers">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tele3_Numbers_Tele3_Tarifs">
+          <End Role="Tele3_Tarifs" Type="Self.Tele3_Tarifs" Multiplicity="0..1" />
+          <End Role="Tele3_Numbers" Type="Self.Tele3_Numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tele3_Tarifs">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tele3_Numbers">
+              <PropertyRef Name="id_tarif" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище user32_dbModelContainer">
+          <EntitySet Name="Tele3_Clients" EntityType="Self.Tele3_Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tele3_Numbers" EntityType="Self.Tele3_Numbers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tele3_Orders" EntityType="Self.Tele3_Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tele3_Tarifs" EntityType="Self.Tele3_Tarifs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Tele3_Numbers_Tele3_Numbers" Association="Self.FK_Tele3_Numbers_Tele3_Numbers">
+            <End Role="Tele3_Clients" EntitySet="Tele3_Clients" />
+            <End Role="Tele3_Numbers" EntitySet="Tele3_Numbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tele3_Numbers_Tele3_Tarifs" Association="Self.FK_Tele3_Numbers_Tele3_Tarifs">
+            <End Role="Tele3_Tarifs" EntitySet="Tele3_Tarifs" />
+            <End Role="Tele3_Numbers" EntitySet="Tele3_Numbers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="user32_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="user32_dbEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tele3_Clients" EntityType="user32_dbModel.Tele3_Clients" />
+          <EntitySet Name="Tele3_Numbers" EntityType="user32_dbModel.Tele3_Numbers" />
+          <EntitySet Name="Tele3_Orders" EntityType="user32_dbModel.Tele3_Orders" />
+          <EntitySet Name="Tele3_Tarifs" EntityType="user32_dbModel.Tele3_Tarifs" />
+          <AssociationSet Name="FK_Tele3_Numbers_Tele3_Numbers" Association="user32_dbModel.FK_Tele3_Numbers_Tele3_Numbers">
+            <End Role="Tele3_Clients" EntitySet="Tele3_Clients" />
+            <End Role="Tele3_Numbers" EntitySet="Tele3_Numbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tele3_Numbers_Tele3_Tarifs" Association="user32_dbModel.FK_Tele3_Numbers_Tele3_Tarifs">
+            <End Role="Tele3_Tarifs" EntitySet="Tele3_Tarifs" />
+            <End Role="Tele3_Numbers" EntitySet="Tele3_Numbers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tele3_Clients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="secondname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="Boolean" Nullable="false" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Tele3_Numbers" Relationship="user32_dbModel.FK_Tele3_Numbers_Tele3_Numbers" FromRole="Tele3_Clients" ToRole="Tele3_Numbers" />
+        </EntityType>
+        <EntityType Name="Tele3_Numbers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="minutes" Type="Int32" Nullable="false" />
+          <Property Name="nextpayment" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Balance" Type="Int32" Nullable="false" />
+          <Property Name="id_client" Type="Int32" Nullable="false" />
+          <Property Name="id_tarif" Type="Int32" />
+          <Property Name="password_set" Type="Boolean" />
+          <NavigationProperty Name="Tele3_Clients" Relationship="user32_dbModel.FK_Tele3_Numbers_Tele3_Numbers" FromRole="Tele3_Numbers" ToRole="Tele3_Clients" />
+          <NavigationProperty Name="Tele3_Tarifs" Relationship="user32_dbModel.FK_Tele3_Numbers_Tele3_Tarifs" FromRole="Tele3_Numbers" ToRole="Tele3_Tarifs" />
+        </EntityType>
+        <EntityType Name="Tele3_Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="surmane" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="secondname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Tele3_Tarifs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
+          <Property Name="minutes" Type="Int32" Nullable="false" />
+          <Property Name="internet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="messages" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="about" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tele3_Numbers" Relationship="user32_dbModel.FK_Tele3_Numbers_Tele3_Tarifs" FromRole="Tele3_Tarifs" ToRole="Tele3_Numbers" />
+        </EntityType>
+        <Association Name="FK_Tele3_Numbers_Tele3_Numbers">
+          <End Type="user32_dbModel.Tele3_Clients" Role="Tele3_Clients" Multiplicity="1" />
+          <End Type="user32_dbModel.Tele3_Numbers" Role="Tele3_Numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tele3_Clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tele3_Numbers">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tele3_Numbers_Tele3_Tarifs">
+          <End Type="user32_dbModel.Tele3_Tarifs" Role="Tele3_Tarifs" Multiplicity="0..1" />
+          <End Type="user32_dbModel.Tele3_Numbers" Role="Tele3_Numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tele3_Tarifs">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tele3_Numbers">
+              <PropertyRef Name="id_tarif" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user32_dbModelContainer" CdmEntityContainer="user32_dbEntities2">
+          <EntitySetMapping Name="Tele3_Clients">
+            <EntityTypeMapping TypeName="user32_dbModel.Tele3_Clients">
+              <MappingFragment StoreEntitySet="Tele3_Clients">
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="secondname" ColumnName="secondname" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tele3_Numbers">
+            <EntityTypeMapping TypeName="user32_dbModel.Tele3_Numbers">
+              <MappingFragment StoreEntitySet="Tele3_Numbers">
+                <ScalarProperty Name="password_set" ColumnName="password_set" />
+                <ScalarProperty Name="id_tarif" ColumnName="id_tarif" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="nextpayment" ColumnName="nextpayment" />
+                <ScalarProperty Name="minutes" ColumnName="minutes" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tele3_Orders">
+            <EntityTypeMapping TypeName="user32_dbModel.Tele3_Orders">
+              <MappingFragment StoreEntitySet="Tele3_Orders">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="secondname" ColumnName="secondname" />
+                <ScalarProperty Name="surmane" ColumnName="surmane" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tele3_Tarifs">
+            <EntityTypeMapping TypeName="user32_dbModel.Tele3_Tarifs">
+              <MappingFragment StoreEntitySet="Tele3_Tarifs">
+                <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="messages" ColumnName="messages" />
+                <ScalarProperty Name="internet" ColumnName="internet" />
+                <ScalarProperty Name="minutes" ColumnName="minutes" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

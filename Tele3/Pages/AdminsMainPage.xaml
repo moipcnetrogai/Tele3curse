@@ -1,0 +1,18 @@
+﻿<Page x:Class="Tele3.Pages.AdminsMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tele3.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="950"
+      Title="AdminsMainPage">
+
+    <Grid>
+        <Button x:Name="Orders" Style="{DynamicResource ButtonStyle1}" Margin="425,120,425,380" Width="100" Height="30" Click="Orders_Click">Заказы</Button>
+        <Button x:Name="Number_base" Style="{DynamicResource ButtonStyle1}" Width="100" Height="30" Margin="425,155,425,345" Click="Number_base_Click">Номера</Button>
+        <Button x:Name="Clients_base" Style="{DynamicResource ButtonStyle1}" Width="100" Height="30" Click="Clients_base_Click" Margin="425,225,425,275">Клиенты</Button>
+        <Button x:Name="Tarifs_base" Style="{DynamicResource ButtonStyle1}" Width="100" Height="30" Click="Tarifs_base_Click" Margin="425,190,425,310">Тарифы</Button>
+        
+    </Grid>
+</Page>

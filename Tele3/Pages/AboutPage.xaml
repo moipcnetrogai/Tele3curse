@@ -1,0 +1,25 @@
+﻿<Page x:Class="Tele3.Pages.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tele3.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="950"
+      Title="AboutPage">
+
+    <Grid>
+        <Label HorizontalContentAlignment="Center" FontFamily="Andalus" FontWeight="Bold" FontSize="15" Margin="406,55,408,445">О приложении</Label>
+        <Image Source="/Tele3;component/Resourses/tele3.png" Width="253" Height="122" Margin="366,90,330,318" ></Image>
+        <TextBlock TextWrapping="Wrap" FontSize="11" FontFamily="Andalus" Margin="366,217,312,43">
+            <Run>«Мой Tele3» - лучший способ управлять мобильным</Run><LineBreak/>
+            <Run>счетом для абонентов Tele3 Россия.</Run><LineBreak/><LineBreak/>
+            <Run FontWeight="Bold">Приложение поможет:</Run><LineBreak/>
+            <Run>• Проверить остатки гигабайтов и минут</Run><LineBreak/>
+            <Run>• Заказать новую sim-карту</Run><LineBreak/>
+            <Run>• Настроить тариф</Run><LineBreak/>
+            <Run>• Оплатить тариф</Run><LineBreak/>
+            
+        </TextBlock>
+    </Grid>
+</Page>

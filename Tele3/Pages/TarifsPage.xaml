@@ -1,0 +1,60 @@
+﻿<Page x:Class="Tele3.Pages.TarifsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tele3.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="950"
+      Title="TarifsPage">
+
+    <Grid>
+        <ListView Grid.Row="2" Name="LViewServices"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="/Tele3;component/Resourses/Пустое+.png"></ImageBrush>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="200" Grid.Column="1">
+                            <TextBlock Style="{DynamicResource BlockCommon}" Width="auto"
+                                       Text="{Binding name}" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left">
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource BlockCommon}" Width="auto"
+                                       FontSize="10" HorizontalAlignment="Left">
+                                <Run Text="Стоимость: "></Run>
+                                <Run Text="{Binding cost}"></Run>
+                                <Run Text=" р."></Run>
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource BlockCommon}" Width="auto"
+                                       FontSize="10" HorizontalAlignment="Left">
+                                <Run Text="Минут: "></Run>
+                                <Run Text="{Binding minutes}"></Run>
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource BlockCommon}" Width="auto"
+                                       FontSize="10" HorizontalAlignment="Left">
+                                <Run Text="Интернет: "></Run>
+                                <Run Text="{Binding internet}"></Run>
+                                <Run Text=" Гб"></Run>
+                            </TextBlock>
+                            <TextBlock Style="{DynamicResource BlockCommon}" Width="auto" TextWrapping="Wrap"
+                                       FontSize="10" HorizontalAlignment="Left" Text="{Binding about}">
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
